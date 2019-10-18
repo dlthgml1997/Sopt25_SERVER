@@ -9,7 +9,7 @@ const csv = require('csvtojson');
 Level 1
 -> 단일 파일에만 저장한다
 */
-const filePath = './public/csv/';
+const filePath = './';
 const fileName = 'file1.csv';
 
 const csvManager = {
@@ -30,8 +30,9 @@ const csvManager = {
             csv().fromFile(path.join(filePath, fileName)).then((jsonArr) => {
                 resolve(jsonArr);
             }, (err) => {
+                console.log('error message occur on csvManager1');
                 reject(err);
-            })
+            });
         });
     },
 }
