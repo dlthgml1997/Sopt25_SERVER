@@ -22,14 +22,9 @@ async function test2() {
         v: 3
     });
     try {
-        const res = await csvManager.read(); //.then((res) => {
+        const res = await csvManager.read(); 
         console.log(res);
     } catch (err) {
         console.log(err);
     }
-    /*    console.log(res);
-    }).catch((err) => {
-        console.log('error message occur on csvManager1Test with test2');
-        console.log(err);
-    });*/
 }
