@@ -1,23 +1,33 @@
 const express = require('express');
 const router = express.Router();
 const csvManager = require('../../module/csvManager');
+const groupMixer = require('../../module/groupMixer');
 
 const memberFileName = 'member.csv';
 const groupFileName = 'group.csv';
 
 router.get('/', async (req, res) => {
-    // TODO 그룹 구성원 전체 보기
+    // TODO 조 그룹 섞기
     try {
-        console.log(memberFileName);
-        const members = await csvManager.read(fileName);
-
-        if (!members) {
+        const members = await csvManager.read(memberFileName);
+        const memberIdxs = members.map(it=> it.groupIdx);
+        const mixedMemIdxs = await groupMixer.mix(memberIdxs);
+        
+        var i=0;
+        
+        if (!members || !mixedMemIdxs) {
             console.log(`read error : ${err}`);
             res.send(`read error : ${err}`);
         }
+        
+        members.forEach(element => {
+            element.groupIdx= mixedMemIdxs[i];
+            i++;
+        });
         res.send(members);
-
-    } catch {
+        
+        csvManager.write(memberFileName,members);
+    } catch (err) {
         console.log(`read error : ${err}`);
     }
 });
