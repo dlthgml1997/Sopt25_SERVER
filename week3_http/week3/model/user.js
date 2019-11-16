@@ -1,6 +1,6 @@
-const statusCode = require('../module/statusCode');
-const responseMessage = require('../module/responseMessage');
-const authUtil = require('../module/authUtil')
+const statusCode = require('../module/util/statusCode');
+const responseMessage = require('../module/util/responseMessage');
+const authUtil = require('../module/util/authUtils')
 
 const userDB = [];
 

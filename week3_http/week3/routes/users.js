@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const authUtil = require('../module/authUtil');
-const responseMessage = require('../module/responseMessage');
-const statusCode = require('../module/statusCode');
+const authUtil = require('../module/util/authUtils');
+const responseMessage = require('../module/util/responseMessage');
+const statusCode = require('../module/util/statusCode');
 const User = require('../model/user');
 
 /*
