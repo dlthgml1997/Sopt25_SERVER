@@ -7,7 +7,7 @@ var router = express.Router();
 router.use('/api', require('./api'));
 
 // localhost:3000/blogs
-router.use('/blogs', require('./blog'));
+router.use('/blogs', require('./blogs'));
 
 router.get('/', function (req, res) {
   res.send('not supported');
